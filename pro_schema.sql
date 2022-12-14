@@ -31,7 +31,6 @@ Create table Employees(
     department varchar(50) not null
 );
 
-Creating products data
 Create table Products(
     product_id varchar(16) primary key,
     name varchar(50) not null,
@@ -39,10 +38,11 @@ Create table Products(
     availability integer not null
 );
 
+--date format : yyyy-mm-dd
 create table Coupons(
     coupon_id varchar(16) primary key,
     name varchar(16) not null,
     discount real not null,
-    start_date date not null, - yyyy-mm-dd
-    end_date date not null - yyyy-mm-dd
+    start_date date not null, 
+    end_date date not null
 );
