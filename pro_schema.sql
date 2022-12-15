@@ -24,13 +24,6 @@ Create table Sellers(
     phone_num varchar(16) not null
 );
 
-Create table Employees(
-    employee_id varchar(16) primary key,
-    employee_name varchar(50) not null,
-    designation varchar(50) not null,
-    department varchar(50) not null
-);
-
 Create table Products(
     product_id varchar(16) primary key,
     name varchar(50) not null,
@@ -55,6 +48,16 @@ Create table MadeReview(
   primary key(customer_id, product_id)
   foreign key(Customer_id ) references Customers(customer_id),
   foreign key(product_id) references Products(product_id)
+);
+
+Create table WorksAtEmployees(
+	employee_id varchar(16) primary key,
+	employee_name varchar(50) not null,
+	employee_designation varchar(50) not null,
+	employee_department varchar(50) not null, 
+	warehouse_name varchar(50),
+	warehouse_zipcode integer,
+	foreign key(warehouse_name, warehouse_zipcode) references ShippedFromWarehouse(name, zipcode)
 );
 
 INSERT INTO coupons (coupon_id , name , discount) values ('MTUOGB','FLAT20', 0.2);
@@ -87,38 +90,6 @@ INSERT INTO coupons (coupon_id , name , discount) values ('CJUKCJ','NOTRICKS', 0
 INSERT INTO coupons (coupon_id , name , discount) values ('QBBEYD','PUMPKIN', 0.13);
 INSERT INTO coupons (coupon_id , name , discount) values ('CBVPKD','TRICKORTREAT', 0.11);
 INSERT INTO coupons (coupon_id , name , discount) values ('XHQOGH','HALLOWEENIE', 0.11);
-
-
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00001','Nicola Oliver','Worker','receiving');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00002','Jason Rees','Worker','receiving');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00003','Natalie Jones','Worker','receiving');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00004','Harry Avery','Worker','receiving');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00005','Adrian Paige','Worker','putaway');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00006','Cameron King','Worker','putaway');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00007','Joe Forsyth','Worker','putaway');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00008','Penelope Ellison','Worker','putaway');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP00009','Sarah Edmunds','Worker','storage');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000010','Jane Jackson','Worker','storage');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000011','Mary Mitchell','Worker','storage');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000012','Alexandra Langdon','Worker','storage');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000013','Diane Edmunds','Worker','picking');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000014','Peter Welch','Worker','picking');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000015','Jake Roberts','Worker','picking');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000016','Brian Hughes','Worker','picking');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000017','Katherine Sanderson','Worker','packing');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000018','Ryan Peake','Worker','packing');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000019','Frank Parsons','Worker','packing');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000020','Stephen Powell','Worker','packing');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000021','Rose Sanderson','Worker','shipping');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000022','Luke Bower','Worker','shipping');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000023','Jack Henderson','Worker','shipping');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000024','Chloe Lyman','Worker','shipping');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000025','Abigail Lee','SuperVisor','Supervision');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000026','Zoe Howard','SuperVisor','Supervision');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000027','Virginia Reid','SuperVisor','Supervision');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000028','Nathan King','SuperVisor','Supervision');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000029','David Henderson','Manager','Management');
-INSERT INTO employees (employee_id, employee_name, designation, department) values ('CBAYEMP000030','Blake Metcalfe','Manager','Management');
 
 INSERT INTO products (product_id, name , price ,availability) values ('CBAYPDT0001','C-bay Mattress', 149.99 , 1000 );
 INSERT INTO products (product_id, name , price ,availability) values ('CBAYPDT0002','C-bay Pillows', 14.99 , 1000 );
@@ -260,3 +231,64 @@ INSERT INTO MadeReview (customer_id, product_id, stars, review)
 values ('280203', 'CBAYPDT0028', 3, 'Works fine I guess.');
 INSERT INTO MadeReview (customer_id, product_id, stars, review) 
 values ('811096', 'CBAYPDT0028', 4, 'No need to look anywhere else when you have this.');
+
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00001','Nicola Oliver','Worker','receiving','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00002','Jason Rees','Worker','receiving','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00003','Natalie Jones','Worker','receiving','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00004','Harry Avery','Worker','receiving','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00005','Adrian Paige','Worker','putaway','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00006','Cameron King','Worker','putaway','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00007','Joe Forsyth','Worker','putaway','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00008','Penelope Ellison','Worker','putaway','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP00009','Sarah Edmunds','Worker','storage','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000010','Jane Jackson','Worker','storage','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000011','Mary Mitchell','Worker','storage','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000012','Alexandra Langdon','Worker','storage','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000013','Diane Edmunds','Worker','picking','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000014','Peter Welch','Worker','picking','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000015','Jake Roberts','Worker','picking','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000016','Brian Hughes','Worker','picking','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000017','Katherine Sanderson','Worker','packing','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000018','Ryan Peake','Worker','packing','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000019','Frank Parsons','Worker','packing','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000020','Stephen Powell','Worker','packing','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000021','Rose Sanderson','Worker','shipping','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000022','Luke Bower','Worker','shipping','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000023','Jack Henderson','Worker','shipping','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000024','Chloe Lyman','Worker','shipping','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000025','Abigail Lee','SuperVisor','Supervision','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000026','Zoe Howard','SuperVisor','Supervision','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000027','Virginia Reid','SuperVisor','Supervision','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000028','Nathan King','SuperVisor','Supervision','C-bay Warehouse1', 90040);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000029','David Henderson','Manager','Management','C-bay Warehouse2', 10018);
+INSERT INTO WorksAtEmployees (employee_id, employee_name, employee_designation, employee_department, warehouse_name, warehouse_zipcode) 
+values ('CBAYEMP000030','Blake Metcalfe','Manager','Management','C-bay Warehouse1', 90040);
