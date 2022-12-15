@@ -1,0 +1,151 @@
+employee_id,employee_name,employee_designation,employee_department,warehouse_name,warehouse_zipcode
+EMP0001,Jodie Wood,manager,management,"Roberts, Gardner and Willis",66658
+EMP0002,Malaika O'Reilly,worker,receiving,"Roberts, Gardner and Willis",66658
+EMP0003,Mohamad Neal,worker,putaway,"Roberts, Gardner and Willis",66658
+EMP0004,Juan Farley,worker,storage,"Roberts, Gardner and Willis",66658
+EMP0005,Tianna Drake,worker,packing,"Roberts, Gardner and Willis",66658
+EMP0006,Diane Charles,worker,shipping,"Roberts, Gardner and Willis",66658
+EMP0007,Aminah Summers,manager,management,"Bowers, Hendrix and Gutierrez",78707
+EMP0008,Dalton Cortez,worker,receiving,"Bowers, Hendrix and Gutierrez",78707
+EMP0009,Kaylum Zamora,worker,putaway,"Bowers, Hendrix and Gutierrez",78707
+EMP00010,Alexandre Mckay,worker,storage,"Bowers, Hendrix and Gutierrez",78707
+EMP00011,Gideon Edwards,worker,packing,"Bowers, Hendrix and Gutierrez",78707
+EMP00012,Chantelle Pollard,worker,shipping,"Bowers, Hendrix and Gutierrez",78707
+EMP00013,Gilbert Prince,manager,management,"Edwards, Smith and Preston",85619
+EMP00014,Casey Ramirez,worker,receiving,"Edwards, Smith and Preston",85619
+EMP00015,Leslie Ortega,worker,putaway,"Edwards, Smith and Preston",85619
+EMP00016,Siena Sparks,worker,storage,"Edwards, Smith and Preston",85619
+EMP00017,Edgar Bernard,worker,packing,"Edwards, Smith and Preston",85619
+EMP00018,Elisabeth Sanders,worker,shipping,"Edwards, Smith and Preston",85619
+EMP00019,Candice Dennis,manager,management,Parker-Garrett,7539
+EMP00020,Natalie Conner,worker,receiving,Parker-Garrett,7539
+EMP00021,Tomasz Pineda,worker,putaway,Parker-Garrett,7539
+EMP00022,Garfield Gilbert,worker,storage,Parker-Garrett,7539
+EMP00023,Stephen Romero,worker,packing,Parker-Garrett,7539
+EMP00024,Syeda Campbell,worker,shipping,Parker-Garrett,7539
+EMP00025,Chloe Buckley,manager,management,"Bryan, Bradley and Li",11336
+EMP00026,Subhan Mckee,worker,receiving,"Bryan, Bradley and Li",11336
+EMP00027,Sian Acevedo,worker,putaway,"Bryan, Bradley and Li",11336
+EMP00028,Cai Mcbride,worker,storage,"Bryan, Bradley and Li",11336
+EMP00029,Steven Fitzgerald,worker,packing,"Bryan, Bradley and Li",11336
+EMP00030,Tommy Reese,worker,shipping,"Bryan, Bradley and Li",11336
+EMP00031,Maisha Stuart,manager,management,Williams-Maxwell,95076
+EMP00032,Fannie Williams,worker,receiving,Williams-Maxwell,95076
+EMP00033,Mariah Lara,worker,putaway,Williams-Maxwell,95076
+EMP00034,Eleni Martin,worker,storage,Williams-Maxwell,95076
+EMP00035,Anaya Leon,worker,packing,Williams-Maxwell,95076
+EMP00036,Alexandros Nielsen,worker,shipping,Williams-Maxwell,95076
+EMP00037,Zeeshan Velez,manager,management,Roberts-Moyer,28006
+EMP00038,Rayhan Petty,worker,receiving,Roberts-Moyer,28006
+EMP00039,Freddie Greer,worker,putaway,Roberts-Moyer,28006
+EMP00040,Elsa Sharpe,worker,storage,Roberts-Moyer,28006
+EMP00041,Elliot Garner,worker,packing,Roberts-Moyer,28006
+EMP00042,Emily Whitehead,worker,shipping,Roberts-Moyer,28006
+EMP00043,Tilly Dickerson,manager,management,Baker-Jackson,83147
+EMP00044,Findlay Archer,worker,receiving,Baker-Jackson,83147
+EMP00045,Kylie Finley,worker,putaway,Baker-Jackson,83147
+EMP00046,Ines Stark,worker,storage,Baker-Jackson,83147
+EMP00047,Jacques Dale,worker,packing,Baker-Jackson,83147
+EMP00048,Alexandra Freeman,worker,shipping,Baker-Jackson,83147
+EMP00049,Irene Santos,manager,management,Perez Group,63609
+EMP00050,Bertha Porter,worker,receiving,Perez Group,63609
+EMP00051,Karim Hodges,worker,putaway,Perez Group,63609
+EMP00052,Cory Knight,worker,storage,Perez Group,63609
+EMP00053,Everett Schaefer,worker,packing,Perez Group,63609
+EMP00054,Marco Paul,worker,shipping,Perez Group,63609
+EMP00055,Nia Patel,manager,management,Jones-Wilson,51338
+EMP00056,Sinead Thomas,worker,receiving,Jones-Wilson,51338
+EMP00057,Joao Christian,worker,putaway,Jones-Wilson,51338
+EMP00058,Hussain Jennings,worker,storage,Jones-Wilson,51338
+EMP00059,Taylor Mcdowell,worker,packing,Jones-Wilson,51338
+EMP00060,Mario Kirby,worker,shipping,Jones-Wilson,51338
+EMP00061,Marcel Cohen,manager,management,Hoffman Ltd,79810
+EMP00062,Gene Strickland,worker,receiving,Hoffman Ltd,79810
+EMP00063,Scarlet Reed,worker,putaway,Hoffman Ltd,79810
+EMP00064,Sachin Bowers,worker,storage,Hoffman Ltd,79810
+EMP00065,Imran Welch,worker,packing,Hoffman Ltd,79810
+EMP00066,Charley Hendrix,worker,shipping,Hoffman Ltd,79810
+EMP00067,Jacob Beard,manager,management,Hill-Johnson,50306
+EMP00068,Zakir Cameron,worker,receiving,Hill-Johnson,50306
+EMP00069,Aimee Browning,worker,putaway,Hill-Johnson,50306
+EMP00070,Serena King,worker,storage,Hill-Johnson,50306
+EMP00071,Hallie Figueroa,worker,packing,Hill-Johnson,50306
+EMP00072,Keanu Castaneda,worker,shipping,Hill-Johnson,50306
+EMP00073,Ismail Hunter,manager,management,"Chen, Kim and Scott",1853
+EMP00074,Zachary Burke,worker,receiving,"Chen, Kim and Scott",1853
+EMP00075,Hamza Potts,worker,putaway,"Chen, Kim and Scott",1853
+EMP00076,Hamzah Armstrong,worker,storage,"Chen, Kim and Scott",1853
+EMP00077,Jenson Howe,worker,packing,"Chen, Kim and Scott",1853
+EMP00078,Junaid Baldwin,worker,shipping,"Chen, Kim and Scott",1853
+EMP00079,Sahar Warner,manager,management,Reynolds Inc,9524
+EMP00080,Sonia Carter,worker,receiving,Reynolds Inc,9524
+EMP00081,Jermaine Chan,worker,putaway,Reynolds Inc,9524
+EMP00082,Josef Hampton,worker,storage,Reynolds Inc,9524
+EMP00083,Cleo Herman,worker,packing,Reynolds Inc,9524
+EMP00084,Eryn Warren,worker,shipping,Reynolds Inc,9524
+EMP00085,Kane Ware,manager,management,"Manning, Fisher and Shelton",99306
+EMP00086,Rhea French,worker,receiving,"Manning, Fisher and Shelton",99306
+EMP00087,Rabia Byrne,worker,putaway,"Manning, Fisher and Shelton",99306
+EMP00088,Jorja Cordova,worker,storage,"Manning, Fisher and Shelton",99306
+EMP00089,Lucas Shields,worker,packing,"Manning, Fisher and Shelton",99306
+EMP00090,Rhys Lyons,worker,shipping,"Manning, Fisher and Shelton",99306
+EMP00091,Ronald Hewitt,manager,management,"Fitzgerald, Fernandez and Campbell",86359
+EMP00092,Alesha Barker,worker,receiving,"Fitzgerald, Fernandez and Campbell",86359
+EMP00093,Lana Moran,worker,putaway,"Fitzgerald, Fernandez and Campbell",86359
+EMP00094,Aqsa Mcconnell,worker,storage,"Fitzgerald, Fernandez and Campbell",86359
+EMP00095,Amelie Quinn,worker,packing,"Fitzgerald, Fernandez and Campbell",86359
+EMP00096,Tabitha Barber,worker,shipping,"Fitzgerald, Fernandez and Campbell",86359
+EMP00097,Kamil Morrow,manager,management,Johnston Inc,64683
+EMP00098,Elissa Brandt,worker,receiving,Johnston Inc,64683
+EMP00099,Adam Frank,worker,putaway,Johnston Inc,64683
+EMP000100,Mathilda Riley,worker,storage,Johnston Inc,64683
+EMP000101,Lea Stephenson,worker,packing,Johnston Inc,64683
+EMP000102,Raymond Buck,worker,shipping,Johnston Inc,64683
+EMP000103,Freyja Best,manager,management,Ross-Mercer,62170
+EMP000104,Dhruv Rose,worker,receiving,Ross-Mercer,62170
+EMP000105,Brodie Pearce,worker,putaway,Ross-Mercer,62170
+EMP000106,Audrey Phillips,worker,storage,Ross-Mercer,62170
+EMP000107,Phyllis Tate,worker,packing,Ross-Mercer,62170
+EMP000108,Princess Nielsen,worker,shipping,Ross-Mercer,62170
+EMP000109,Orlando Powell,manager,management,Strickland-Martinez,78049
+EMP000110,Trystan Daniel,worker,receiving,Strickland-Martinez,78049
+EMP000111,Ruairi Trujillo,worker,putaway,Strickland-Martinez,78049
+EMP000112,Zara Koch,worker,storage,Strickland-Martinez,78049
+EMP000113,Madiha Knight,worker,packing,Strickland-Martinez,78049
+EMP000114,Lilia Hodge,worker,shipping,Strickland-Martinez,78049
+EMP000115,Shawn Warren,manager,management,Gilbert-Hubbard,89485
+EMP000116,Clayton West,worker,receiving,Gilbert-Hubbard,89485
+EMP000117,Louie Atkinson,worker,putaway,Gilbert-Hubbard,89485
+EMP000118,Dale Moon,worker,storage,Gilbert-Hubbard,89485
+EMP000119,Anna Rodgers,worker,packing,Gilbert-Hubbard,89485
+EMP000120,Rita Bridges,worker,shipping,Gilbert-Hubbard,89485
+EMP000121,Harold Khan,manager,management,Lee and Sons,67323
+EMP000122,Ophelia Guerra,worker,receiving,Lee and Sons,67323
+EMP000123,Casey Webb,worker,putaway,Lee and Sons,67323
+EMP000124,Bronte Jacobs,worker,storage,Lee and Sons,67323
+EMP000125,Abel Durham,worker,packing,Lee and Sons,67323
+EMP000126,Caspar Roberson,worker,shipping,Lee and Sons,67323
+EMP000127,Marwa Gordon,manager,management,Owens Group,31529
+EMP000128,Philip Adkins,worker,receiving,Owens Group,31529
+EMP000129,Mattie Valencia,worker,putaway,Owens Group,31529
+EMP000130,Marion Simon,worker,storage,Owens Group,31529
+EMP000131,Amelie Johnson,worker,packing,Owens Group,31529
+EMP000132,Wade Crane,worker,shipping,Owens Group,31529
+EMP000133,Harmony Salas,manager,management,Martin Ltd,76131
+EMP000134,Emmy Downs,worker,receiving,Martin Ltd,76131
+EMP000135,Brittney Graham,worker,putaway,Martin Ltd,76131
+EMP000136,Eileen Velasquez,worker,storage,Martin Ltd,76131
+EMP000137,Patrick Mitchell,worker,packing,Martin Ltd,76131
+EMP000138,Jenna Bryant,worker,shipping,Martin Ltd,76131
+EMP000139,Ollie Montes,manager,management,"Brown, Humphrey and Callahan",8592
+EMP000140,Donald Long,worker,receiving,"Brown, Humphrey and Callahan",8592
+EMP000141,Elmer Burke,worker,putaway,"Brown, Humphrey and Callahan",8592
+EMP000142,Kaden Reed,worker,storage,"Brown, Humphrey and Callahan",8592
+EMP000143,Ernest Bentley,worker,packing,"Brown, Humphrey and Callahan",8592
+EMP000144,Ella-Louise Carver,worker,shipping,"Brown, Humphrey and Callahan",8592
+EMP000145,Dawid Johns,manager,management,"Curry, Cox and Watson",87890
+EMP000146,Olive Saunders,worker,receiving,"Curry, Cox and Watson",87890
+EMP000147,Lawson Wu,worker,putaway,"Curry, Cox and Watson",87890
+EMP000148,Aliza Roman,worker,storage,"Curry, Cox and Watson",87890
+EMP000149,Claudia Farrell,worker,packing,"Curry, Cox and Watson",87890
+EMP000150,Madison Snyder,worker,shipping,"Curry, Cox and Watson",87890
