@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS "warehouse" CASCADE;
 DROP TABLE IF EXISTS "orderedbyappliedonshippedfrom" CASCADE;
 DROP TABLE IF EXISTS "boughtin" CASCADE;
 DROP TABLE IF EXISTS "worksatemployees" CASCADE;
+DROP TABLE IF EXISTS "soldby" CASCADE;
 
 
 create table Coupons(
@@ -105,6 +106,15 @@ Create table WorksAtEmployees(
 	warehouse_zipcode integer,
 	foreign key(warehouse_name, warehouse_zipcode) references Warehouse(warehouse_name, warehouse_zipcode)
 );
+
+Create table SoldBy(
+	seller_id varchar(60),
+	product_id varchar(60),
+	primary key (product_id, seller_id),
+	foreign key (product_id) references Products(product_id),
+	foreign key (seller_id) references Sellers(seller_id)
+);
+
 
 INSERT INTO coupons (coupon_id , name , discount) values ('MTUOGB','FLAT20', 0.2);
 INSERT INTO coupons (coupon_id , name , discount) values ('UAWYVQ','BLACKFRIDAY', 0.5);
