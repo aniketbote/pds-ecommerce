@@ -35,9 +35,7 @@ Create table Products(
 create table Coupons(
     coupon_id varchar(16) primary key,
     name varchar(16) not null,
-    discount real not null,
-    start_date date not null, 
-    end_date date not null
+    discount real not null
 );
 
 Create table MadeReview(
