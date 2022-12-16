@@ -52,6 +52,7 @@ def run_query_1():
     sql_table = f"SELECT * FROM coupons;"
     try:
         df = query_db(sql_table)
+        st.write(type(df))
         st.dataframe(df)
     except:
         st.write(
@@ -59,10 +60,16 @@ def run_query_1():
         )
     
     #get coupons list
-    sql_coupons_ids = "SELECT name FROM customers;"
+    st.write("Reached for sql")
+    sql_coupons_names = f"SELECT name FROM coupons;"
     try:
-        coupons_ids = query_db(sql_coupons_ids)["name"].tolist()
-        coupon_id = st.selectbox("Choose a coupon", coupons_ids)
+        st.write("inside try box")
+        coupons_names = query_db(sql_coupons_names)["name"].tolist()
+        st.write("reached_here")
+        coupon_name = st.selectbox("Choose a coupon", coupons_names)
+        sql_coupons_id = f"SELECT coupon_id FROM coupons WHERE name={coupon_name};"
+        coupon_ids = query_db(sql_coupons_id)["coupon_id"].tolist()
+        st.write("reached at last")
     except:
         st.write("Sorry! Something went wrong with your query, please try again.")
 
@@ -70,7 +77,7 @@ def run_query_1():
                 SELECT Customers.id ad Customer_id, Customers.fname as first_name, Customers.lname as last_name, Customers.age, Customers.email, Customers.address 
                 from Customers 
                 join OrderedByAppliedonShippedfrom on Customers.id=OrderedByAppliedonShippedfrom.customer_id 
-                where {coupon_name}==OrderedByAppliedonShippedfrom.coupon_id;
+                where {coupon_ids.loc[0]}=OrderedByAppliedonShippedfrom.coupon_id;
             """
     try:
         query_output_df = query_db(query)
@@ -101,7 +108,7 @@ def run_query_6():
     pass
 
 "## Read tables"
-query_1 = "List all the customer's details that have used a coupon."
+query_1 = "List all the customer's details that have used a particular coupon."
 query_2 = "Query 2"
 query_3 = "Query 3"
 query_4 = "Query 4"
