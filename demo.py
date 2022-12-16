@@ -3,7 +3,7 @@ import psycopg2
 import streamlit as st
 from configparser import ConfigParser
 
-"# Demo: Streamlit + Postgres"
+"#Final Project: E-commerce website"
 
 
 @st.cache
@@ -52,7 +52,6 @@ def run_query_1():
     sql_table = f"SELECT * FROM coupons;"
     try:
         df = query_db(sql_table)
-        st.write(type(df))
         st.dataframe(df)
     except:
         st.write(
@@ -60,37 +59,47 @@ def run_query_1():
         )
     
     #get coupons list
-    st.write("Reached for sql")
     sql_coupons_names = f"SELECT name FROM coupons;"
     try:
-        st.write("inside try box")
-        coupons_names = query_db(sql_coupons_names)["name"].tolist()
-        st.write("reached_here")
+        coupons_names = query_db(sql_coupons_names)["name"].tolist()    
         coupon_name = st.selectbox("Choose a coupon", coupons_names)
-        sql_coupons_id = f"SELECT coupon_id FROM coupons WHERE name={coupon_name};"
+        sql_coupons_id = f"SELECT coupon_id FROM coupons WHERE name='{coupon_name}';"
         coupon_ids = query_db(sql_coupons_id)["coupon_id"].tolist()
-        st.write("reached at last")
+        query = f"""
+        SELECT Customers.customer_id , Customers.fname, Customers.lname, Customers.age, Customers.email, Customers.address 
+        from Customers 
+        join OrderedByAppliedonShippedfrom on Customers.customer_id=OrderedByAppliedonShippedfrom.customer_id 
+        where OrderedByAppliedonShippedfrom.coupon_id='{coupon_ids[0]}';"""
+
+        try:
+            query_output_df = query_db(query)
+            st.dataframe(query_output_df)
+        except:
+            st.write(
+                "Sorry! Something went wrong with your query, please try again."
+            )
     except:
         st.write("Sorry! Something went wrong with your query, please try again.")
 
-    query = f"""
-                SELECT Customers.id ad Customer_id, Customers.fname as first_name, Customers.lname as last_name, Customers.age, Customers.email, Customers.address 
-                from Customers 
-                join OrderedByAppliedonShippedfrom on Customers.id=OrderedByAppliedonShippedfrom.customer_id 
-                where {coupon_ids.loc[0]}=OrderedByAppliedonShippedfrom.coupon_id;
-            """
+    
+
+def run_query_2():
+    #mayank's query - List the number of orders that were shipped from each warehouse with warehouse details. 
+    f"Coupons Table"
+
+    sql_table = f"""
+    SELECT warehouse_name, count(warehouse_name) as orders_shipped
+    from OrderedByAppliedonShippedfrom 
+    Group By (OrderedByAppliedonShippedfrom.warehouse_name, OrderedByAppliedonShippedfrom.warehouse_zipcode);"""
+
     try:
-        query_output_df = query_db(query)
-        st.dataframe(query_output_df)
+        df = query_db(sql_table)
+        st.dataframe(df)
     except:
         st.write(
             "Sorry! Something went wrong with your query, please try again."
         )
-
-def run_query_2():
-    #mayank's query
-    pass
-
+    
 def run_query_3():
     #mayank's query 
     pass
@@ -109,7 +118,7 @@ def run_query_6():
 
 "## Read tables"
 query_1 = "List all the customer's details that have used a particular coupon."
-query_2 = "Query 2"
+query_2 = "List the number of orders that were shipped from each warehouse."
 query_3 = "Query 3"
 query_4 = "Query 4"
 query_5 = "Query 5"
