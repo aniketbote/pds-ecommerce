@@ -114,4 +114,3 @@ Create table SoldBy(
 	foreign key (product_id) references Products(product_id),
 	foreign key (seller_id) references Sellers(seller_id)
 );
-
