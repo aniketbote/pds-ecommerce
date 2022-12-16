@@ -90,9 +90,6 @@ def run_query_2():
         )
     
 def run_query_3():
-    #List all the customer's details that have used a coupon.
-    f"Coupons Table"
-    #get coupons list
     try:
         num_stars_list = [1, 2, 3, 4, 5]
         num_stars = st.selectbox("Choose number of stars", num_stars_list)
