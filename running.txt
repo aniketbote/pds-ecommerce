@@ -1,15 +1,18 @@
 # Copy csv and sql files (Run in local pc)
-scp final_data/SoldBy.csv final_data/madereviews.csv final_data/worksatemployees.csv final_data/Customers.csv final_data/HasCards.csv final_data/boughtin.csv final_data/OrderedByAppliedonShippedfrom.csv final_data/warehouse.csv final_data/SoldBy.csv final_pro_schema.sql NETID@jedi.poly.edu:~
+scp final_data/* final_pro_schema.sql NETID@jedi.poly.edu:~
 
 # Create table using sql 
 psql -U NETID -d NETID_db -f final_pro_schema.sql
 
 # Populate table using csv
+cat ./coupons.csv | psql -U NETID -d NETID_db -c "COPY coupons FROM STDIN CSV HEADER"
 cat ./Customers.csv | psql -U NETID -d NETID_db -c "COPY Customers FROM STDIN CSV HEADER"
-cat ./HasCards.csv | psql -U NETID -d NETID_db -c "COPY HasCards FROM STDIN CSV HEADER"
+cat ./HasCards.csv | psql -U NETID -d NETID_db -c "COPY hascards FROM STDIN CSV HEADER"
+cat ./sellers.csv | psql -U NETID -d NETID_db -c "COPY sellers FROM STDIN CSV HEADER"
+cat ./products.csv | psql -U NETID -d NETID_db -c "COPY products FROM STDIN CSV HEADER"
+cat ./madereview.csv | psql -U NETID -d NETID_db -c "COPY madereview FROM STDIN CSV HEADER"
 cat ./warehouse.csv | psql -U NETID -d NETID_db -c "COPY warehouse FROM STDIN CSV HEADER"
 cat ./OrderedByAppliedonShippedfrom.csv | psql -U NETID -d NETID_db -c "COPY OrderedByAppliedonShippedfrom FROM STDIN CSV HEADER"
 cat ./boughtin.csv | psql -U NETID -d NETID_db -c "COPY boughtin FROM STDIN CSV HEADER"
-cat ./madereviews.csv | psql -U NETID -d NETID_db -c "COPY MadeReview FROM STDIN CSV HEADER"
-cat ./worksatemployees.csv | psql -U NETID -d NETID_db -c "COPY WorksAtEmployees FROM STDIN CSV HEADER"
-cat ./SoldBy.csv | psql -U NETID -d NETID_db -c "COPY SoldBy FROM STDIN CSV HEADER"
+cat ./worksatemployees.csv | psql -U NETID -d NETID_db -c "COPY worksatemployees FROM STDIN CSV HEADER"
+cat ./SoldBy.csv | psql -U NETID -d NETID_db -c "COPY soldby FROM STDIN CSV HEADER"
