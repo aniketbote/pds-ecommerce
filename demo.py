@@ -48,16 +48,6 @@ def query_db(sql: str):
 def run_query_1():
     #List all the customer's details that have used a coupon.
     f"Coupons Table"
-
-    sql_table = f"SELECT * FROM coupons;"
-    try:
-        df = query_db(sql_table)
-        st.dataframe(df)
-    except:
-        st.write(
-            "Sorry! Something went wrong with your query, please try again."
-        )
-    
     #get coupons list
     sql_coupons_names = f"SELECT name FROM coupons;"
     try:
@@ -66,7 +56,7 @@ def run_query_1():
         sql_coupons_id = f"SELECT coupon_id FROM coupons WHERE name='{coupon_name}';"
         coupon_ids = query_db(sql_coupons_id)["coupon_id"].tolist()
         query = f"""
-        SELECT Customers.customer_id , Customers.fname, Customers.lname, Customers.age, Customers.email, Customers.address 
+        SELECT Customers.customer_id, Customers.fname, Customers.lname, OrderedByAppliedonShippedfrom.order_id as applied_on_order, Customers.age, Customers.email, Customers.address
         from Customers 
         join OrderedByAppliedonShippedfrom on Customers.customer_id=OrderedByAppliedonShippedfrom.customer_id 
         where OrderedByAppliedonShippedfrom.coupon_id='{coupon_ids[0]}';"""
@@ -84,8 +74,7 @@ def run_query_1():
     
 
 def run_query_2():
-    #mayank's query - List the number of orders that were shipped from each warehouse with warehouse details. 
-    f"Coupons Table"
+    #mayank's query - List the number of orders that were shipped from each warehouse. 
 
     sql_table = f"""
     SELECT warehouse_name, count(warehouse_name) as orders_shipped
@@ -101,7 +90,26 @@ def run_query_2():
         )
     
 def run_query_3():
-    #mayank's query 
+    #List all the customer's details that have used a coupon.
+    f"Coupons Table"
+    #get coupons list
+    try:
+        num_stars_list = [1, 2, 3, 4, 5]
+        num_stars = st.selectbox("Choose number of stars", num_stars_list)
+        query = f"""SELECT DISTINCT(s.name, s.address, p.product_id, p.name) as seller_details
+        FROM Sellers s
+        JOIN SoldBy sb ON s.seller_id = sb.seller_id
+        JOIN Products p ON sb.product_id = p.product_id
+        JOIN MadeReview r ON p.product_id = r.product_id
+        WHERE r.stars = {num_stars};"""
+        seller_details = query_db(query)
+        seller_details = seller_details["seller_details"].tolist()
+        for seller in seller_details:
+            cur_seller = seller.split(',')
+            st.write(f"Seller {cur_seller[0][1:]} lives at {cur_seller[1]}\" and  got a  {num_stars} star rating for product: {cur_seller[-1][:-1]}")
+    except:
+        st.write("Sorry! Something went wrong with your query, please try again.")
+
     pass
 
 def run_query_4():
@@ -119,7 +127,7 @@ def run_query_6():
 "## Read tables"
 query_1 = "List all the customer's details that have used a particular coupon."
 query_2 = "List the number of orders that were shipped from each warehouse."
-query_3 = "Query 3"
+query_3 = "Find the names and addresses of all sellers who sell a product that has been reviewed with particular number of stars"
 query_4 = "Query 4"
 query_5 = "Query 5"
 query_6 = "Query 6"
@@ -143,62 +151,3 @@ if query_details:
         run_query_5()
     else:
         run_query_6()
-
-
-
-
-"""
-"## Query customers"
-
-sql_customer_names = "SELECT name FROM customers;"
-try:
-    customer_names = query_db(sql_customer_names)["name"].tolist()
-    customer_name = st.selectbox("Choose a customer", customer_names)
-except:
-    st.write("Sorry! Something went wrong with your query, please try again.")
-
-if customer_name:
-    sql_customer = f"SELECT * FROM customers WHERE name = '{customer_name}';"
-    try:
-        customer_info = query_db(sql_customer).loc[0]
-        c_age, c_city, c_state = (
-            customer_info["age"],
-            customer_info["city"],
-            customer_info["state"],
-        )
-        st.write(
-            f"{customer_name} is {c_age}-year old, and lives in {c_city}, {c_state}."
-        )
-    except:
-        st.write(
-            "Sorry! Something went wrong with your query, please try again."
-        )
-
-"## Query orders"
-
-sql_order_ids = "SELECT order_id FROM orders;"
-try:
-    order_ids = query_db(sql_order_ids)["order_id"].tolist()
-    order_id = st.selectbox("Choose an order", order_ids)
-except:
-    st.write("Sorry! Something went wrong with your query, please try again.")
-
-if order_id:
-    sql_order = f"""
-"""        SELECT C.name, O.order_date
-        FROM orders as O, customers as C 
-        WHERE O.order_id = {order_id}
-        AND O.customer_id = C.id;"""
-"""
-    try:
-        customer_info = query_db(sql_order).loc[0]
-        customer_name, order_date = (
-            customer_info["name"],
-            customer_info["order_date"],
-        )
-        st.write(f"This order is placed by {customer_name} on {order_date}.")
-    except:
-        st.write(
-            "Sorry! Something went wrong with your query, please try again."
-        )
-"""
