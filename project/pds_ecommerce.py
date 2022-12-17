@@ -66,7 +66,7 @@ if table_name:
             "Sorry! Something went wrong with your query, please try again."
         )
 
-"## Query customers"
+"## Query 1"
 "The query finds all the seller, their products and total amount for each product bought by a specific customer"
 
 sql_customer_names = "SELECT fname FROM Customers order by fname;"
@@ -94,7 +94,7 @@ if customer_name:
 
 
 
-"## Query warehouses"
+"## Query 2"
 "The query finds total quantity shipped from warehouse having specific name for all products shipped"
 
 sql_warehouse_names = "SELECT warehouse_name FROM Warehouse order by warehouse_name;"
@@ -122,7 +122,7 @@ if warehouse_name:
         )
 
 
-"## Query verified purchase"
+"## Query 3"
 "The query finds verified review for a given product. A review is verified if the customer who made the review also bought the product"
 
 sql_product_names = "SELECT name FROM Products order by name;"
@@ -143,3 +143,65 @@ if product_name:
             "Sorry! Something went wrong with your query, please try again."
         )
 
+
+#List all the customer's details that have used a coupon.
+"## Query 4"
+"In this query we find the users and display their details that have used a particular coupon in their orders."
+#get coupons list
+sql_coupons_names = f"SELECT name FROM coupons;"
+try:
+    coupons_names = query_db(sql_coupons_names)["name"].tolist()    
+    coupon_name = st.selectbox("Choose a coupon", coupons_names)
+    sql_coupons_id = f"SELECT coupon_id FROM coupons WHERE name='{coupon_name}';"
+    coupon_ids = query_db(sql_coupons_id)["coupon_id"].tolist()
+    query = f"""
+    SELECT Customers.customer_id, Customers.fname, Customers.lname, OrderedByAppliedonShippedfrom.order_id as applied_on_order, Customers.age, Customers.email, Customers.address
+    from Customers 
+    join OrderedByAppliedonShippedfrom on Customers.customer_id=OrderedByAppliedonShippedfrom.customer_id 
+    where OrderedByAppliedonShippedfrom.coupon_id='{coupon_ids[0]}';"""
+
+    try:
+        query_output_df = query_db(query)
+        st.dataframe(query_output_df)
+    except:
+        st.write(
+            "Sorry! Something went wrong with your query, please try again."
+        )
+except:
+    st.write("Sorry! Something went wrong with your query, please try again.")
+
+
+"## Query 5"
+"In this query we display the names and addresses of all the sellers who have sold a product which has been reviewed with a particular number of stars."
+try:
+    num_stars_list = [1, 2, 3, 4, 5]
+    num_stars = st.selectbox("Choose number of stars", num_stars_list)
+    query = f"""SELECT DISTINCT(s.name, s.address, p.product_id, p.name) as seller_details
+    FROM Sellers s
+    JOIN SoldBy sb ON s.seller_id = sb.seller_id
+    JOIN Products p ON sb.product_id = p.product_id
+    JOIN MadeReview r ON p.product_id = r.product_id
+    WHERE r.stars = {num_stars};"""
+    seller_details = query_db(query)
+    seller_details = seller_details["seller_details"].tolist()
+    for seller in seller_details:
+        cur_seller = seller.split(',')
+        st.write(f"Seller {cur_seller[0][1:]} lives at {cur_seller[1]}\" and  got a  {num_stars} star rating for product: {cur_seller[-1][:-1]}")
+except:
+    st.write("Sorry! Something went wrong with your query, please try again.")
+
+
+"## Query 6"
+"In this query we display the number of orders that have been shipped from each warehouse."
+sql_table = f"""
+    SELECT warehouse_name, count(warehouse_name) as orders_shipped
+    from OrderedByAppliedonShippedfrom 
+    Group By (OrderedByAppliedonShippedfrom.warehouse_name, OrderedByAppliedonShippedfrom.warehouse_zipcode);"""
+
+try:
+    df = query_db(sql_table)
+    st.dataframe(df)
+except:
+    st.write(
+        "Sorry! Something went wrong with your query, please try again."
+    )
